@@ -17,9 +17,7 @@ function windowingInitialize() {
 	windowStacks[0] = windowCreate("GameBoy", true);
 	windowStacks[1] = windowCreate("terminal", false);
 	windowStacks[2] = windowCreate("about", false);
-	windowStacks[3] = windowCreate("settings", false);
 	windowStacks[4] = windowCreate("input_select", false);
-	windowStacks[5] = windowCreate("instructions", false);
 	windowStacks[6] = windowCreate("local_storage_popup", false);
 	windowStacks[7] = windowCreate("local_storage_listing", false);
 	windowStacks[8] = windowCreate("freeze_listing", false);
@@ -33,51 +31,23 @@ function windowingInitialize() {
 	catch (error) {
 		cout("Fatal windowing error: \"" + error.message + "\" file:" + error.fileName + " line: " + error.lineNumber, 2);
 	}
-	//Update the settings to the emulator's default:
-	document.getElementById("enable_sound").checked = settings[0];
-	document.getElementById("enable_gbc_bios").checked = settings[1];
-	document.getElementById("disable_colors").checked = settings[2];
-	document.getElementById("rom_only_override").checked = settings[9];
-	document.getElementById("mbc_enable_override").checked = settings[10];
-	document.getElementById("enable_colorization").checked = settings[4];
-	document.getElementById("do_minimal").checked = showAsMinimal;
-	document.getElementById("software_resizing").checked = settings[12];
-	document.getElementById("typed_arrays_disallow").checked = settings[5];
-	document.getElementById("gb_boot_rom_utilized").checked = settings[11];
-	document.getElementById("resize_smoothing").checked = settings[13];
-    document.getElementById("channel1").checked = settings[14][0];
-    document.getElementById("channel2").checked = settings[14][1];
-    document.getElementById("channel3").checked = settings[14][2];
-    document.getElementById("channel4").checked = settings[14][3];
 }
 function registerGUIEvents() {
 	cout("In registerGUIEvents() : Registering GUI Events.", -1);
 	addEvent("click", document.getElementById("terminal_clear_button"), clear_terminal);
 	addEvent("click", document.getElementById("local_storage_list_refresh_button"), refreshStorageListing);
 	addEvent("click", document.getElementById("terminal_close_button"), function () { windowStacks[1].hide() });
-	addEvent("click", document.getElementById("about_close_button"), function () { windowStacks[2].hide() });
-	addEvent("click", document.getElementById("settings_close_button"), function () { windowStacks[3].hide() });
 	addEvent("click", document.getElementById("input_select_close_button"), function () { windowStacks[4].hide() });
-	addEvent("click", document.getElementById("instructions_close_button"), function () { windowStacks[5].hide() });
 	addEvent("click", document.getElementById("local_storage_list_close_button"), function () { windowStacks[7].hide() });
 	addEvent("click", document.getElementById("local_storage_popup_close_button"), function () { windowStacks[6].hide() });
 	addEvent("click", document.getElementById("save_importer_close_button"), function () { windowStacks[9].hide() });
 	addEvent("click", document.getElementById("freeze_list_close_button"), function () { windowStacks[8].hide() });
-	addEvent("click", document.getElementById("GameBoy_about_menu"), function () { windowStacks[2].show() });
-	addEvent("click", document.getElementById("GameBoy_settings_menu"), function () { windowStacks[3].show() });
 	addEvent("click", document.getElementById("local_storage_list_menu"), function () { refreshStorageListing(); windowStacks[7].show(); });
 	addEvent("click", document.getElementById("freeze_list_menu"), function () { refreshFreezeListing(); windowStacks[8].show(); });
 	addEvent("click", document.getElementById("view_importer"), function () { windowStacks[9].show() });
 	addEvent("keydown", document, keyDown);
 	addEvent("keyup", document,  function (event) {
-		if (event.keyCode == 27) {
-			//Fullscreen on/off
-			fullscreenPlayer();
-		}
-		else {
-			//Control keys / other
-			keyUp(event);
-		}
+		keyUp(event);
 	});
 	addEvent("MozOrientation", window, GameBoyGyroSignalHandler);
 	addEvent("deviceorientation", window, GameBoyGyroSignalHandler);
@@ -256,65 +226,8 @@ function registerGUIEvents() {
 	addEvent("click", document.getElementById("save_SRAM_state_clicker"), function () {
 		saveSRAM();
 	});
-	addEvent("click", document.getElementById("enable_sound"), function () {
-		settings[0] = document.getElementById("enable_sound").checked;
-		if (GameBoyEmulatorInitialized()) {
-			gameboy.initSound();
-		}
-	});
-	addEvent("click", document.getElementById("disable_colors"), function () {
-		settings[2] = document.getElementById("disable_colors").checked;
-	});
-	addEvent("click", document.getElementById("rom_only_override"), function () {
-		settings[9] = document.getElementById("rom_only_override").checked;
-	});
-	addEvent("click", document.getElementById("mbc_enable_override"), function () {
-		settings[10] = document.getElementById("mbc_enable_override").checked;
-	});
-	addEvent("click", document.getElementById("enable_gbc_bios"), function () {
-		settings[1] = document.getElementById("enable_gbc_bios").checked;
-	});
-	addEvent("click", document.getElementById("enable_colorization"), function () {
-		settings[4] = document.getElementById("enable_colorization").checked;
-	});
-	addEvent("click", document.getElementById("do_minimal"), function () {
-		showAsMinimal = document.getElementById("do_minimal").checked;
-		fullscreenCanvas.className = (showAsMinimal) ? "minimum" : "maximum";
-	});
-	addEvent("click", document.getElementById("software_resizing"), function () {
-		settings[12] = document.getElementById("software_resizing").checked;
-		if (GameBoyEmulatorInitialized()) {
-			gameboy.initLCD();
-		}
-	});
-	addEvent("click", document.getElementById("typed_arrays_disallow"), function () {
-		settings[5] = document.getElementById("typed_arrays_disallow").checked;
-	});
-	addEvent("click", document.getElementById("gb_boot_rom_utilized"), function () {
-		settings[11] = document.getElementById("gb_boot_rom_utilized").checked;
-	});
-	addEvent("click", document.getElementById("resize_smoothing"), function () {
-		settings[13] = document.getElementById("resize_smoothing").checked;
-		if (GameBoyEmulatorInitialized()) {
-			gameboy.initLCD();
-		}
-	});
-    addEvent("click", document.getElementById("channel1"), function () {
-        settings[14][0] = document.getElementById("channel1").checked;
-    });
-    addEvent("click", document.getElementById("channel2"), function () {
-        settings[14][1] = document.getElementById("channel2").checked;
-    });
-    addEvent("click", document.getElementById("channel3"), function () {
-        settings[14][2] = document.getElementById("channel3").checked;
-    });
-    addEvent("click", document.getElementById("channel4"), function () {
-        settings[14][3] = document.getElementById("channel4").checked;
-    });
-	addEvent("click", document.getElementById("view_fullscreen"), fullscreenPlayer);
 	new popupMenu(document.getElementById("GameBoy_view_menu"), document.getElementById("GameBoy_view_popup"));
 	addEvent("click", document.getElementById("view_terminal"), function () { windowStacks[1].show() });
-	addEvent("click", document.getElementById("view_instructions"), function () { windowStacks[5].show() });
 	addEvent("mouseup", document.getElementById("gfx"), initNewCanvasSize);
 	addEvent("resize", window, initNewCanvasSize);
 	addEvent("unload", window, function () {
@@ -358,9 +271,7 @@ function keyUp(event) {
 	}
 }
 function initPlayer() {
-	document.getElementById("title").style.display = "none";
-	document.getElementById("port_title").style.display = "none";
-	document.getElementById("fullscreenContainer").style.display = "none";
+	return
 }
 function fullscreenPlayer() {
 	if (GameBoyEmulatorInitialized()) {

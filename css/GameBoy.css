@@ -1,13 +1,8 @@
 @charset "utf-8";
 html {
-	background-color: rgb(200, 225, 225);
+	background-color: rgb(68, 64, 76);
 	background-attachment: fixed;
 	background-repeat: none;
-	background-image: url("../images/gradient_01.svg");
-	background-image: -webkit-linear-gradient(315deg, rgb(200, 200, 255), rgb(200, 255, 200));
-	background-image: -moz-linear-gradient(315deg, rgb(200, 200, 255), rgb(200, 255, 200));
-	background-image: -o-linear-gradient(315deg, rgb(200, 200, 255), rgb(200, 255, 200));
-	background-image: linear-gradient(135deg, rgb(200, 200, 255), rgb(200, 255, 200));
 	margin: 0;
 	padding: 0;
 	font-family: arial;
@@ -58,8 +53,8 @@ div.window {
 	opacity: 1;
 }
 div#GameBoy {
-	min-height: 340px;
-	min-width: 400px;
+	min-height: 288px;
+	min-width: 320px;
 }
 div#input_select, div#save_importer {
 	min-height: 100px;
@@ -142,14 +137,7 @@ div#gfx {
 	left: 3px;
 	right: 3px;
 	top: 43px;
-	background-color: rgb(200, 50, 50);
-	background-repeat: repeat-x;
-	background-attachment: scroll;
-	background-image: url("../images/gradient_05.svg");
-	background-image: -webkit-linear-gradient(top, rgb(200, 50, 50), rgb(200, 75, 150));
-	background-image: -moz-linear-gradient(top, rgb(200, 50, 50), rgb(200, 75, 150));
-	background-image: -o-linear-gradient(top, rgb(200, 50, 50), rgb(200, 75, 150));
-	background-image: linear-gradient(top, rgb(200, 50, 50), rgb(200, 75, 150));
+	background-color: rgb(0, 0, 0);
 }
 body > div#fullscreenContainer {
 	position: absolute;	/*Fallback here if fixed isn't supported*/
@@ -447,4 +435,12 @@ ul.menu > li:hover > ul.menu {
 	top: 0;
 	display: block;
 	display: inline-block;
+}
+canvas {
+  image-rendering: optimizeSpeed;             /* Older versions of FF          */
+  image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+  image-rendering: -webkit-optimize-contrast; /* Safari                        */
+  image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated;                 /* Awesome future-browsers       */
+  -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
 }
