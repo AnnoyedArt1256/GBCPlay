@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
     <head>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<link rel="apple-touch-icon" href="images/128.png"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="apple-mobile-web-app-title" content="GBCPlay"/>
         <style type="text/css">@import url(&quot;css/GameBoy.css&quot;);</style>
         <script type="text/javascript">
     var DEBUG_MESSAGES = false;
@@ -10,6 +14,7 @@
         windowingInitialize();
     }
         </script>
+        <script type="text/javascript" src="js/controls/joy.js"/>
         <script type="text/javascript" src="js/other/windowStack.js"/>
         <script type="text/javascript" src="js/other/terminal.js"/>
         <script type="text/javascript" src="js/other/gui.js"/>
@@ -24,7 +29,7 @@
         <title>GameBoy Online</title>
     </head>
     <body>
-        <div id="GameBoy" class="window">
+        <div id="GameBoy" class="window" style="width: 80vh; height: 80vh;">
             <div class="menubar">
                 <span id="GameBoy_file_menu">File</span>
                 <span id="GameBoy_view_menu">View</span>
@@ -33,6 +38,7 @@
                 <canvas id="mainCanvas"/>
             </div>
         </div>
+		<div id="joy" style="width: 30vw; height: 30vw;"></div>
         <div id="terminal" class="window">
             <div id="terminal_output"/>
             <div class="button_rack">
@@ -145,5 +151,18 @@
         <div id="fullscreenContainer">
             <canvas id="fullscreen" class="maximum"/>
         </div>
+		<script>
+			/*
+			var Joy1 = new JoyStick("joy", {
+				"internalFillColor": "#eee",
+				"internalStrokeColor": "#eee",
+				"externalStrokeColor": "#eee"
+			}, function(stickData) {
+				sx = stickData.x;
+				sy = stickData.y;
+				dir = stickData.cardinalDirection;
+			});
+			*/
+		</script>
     </body>
 </html>
