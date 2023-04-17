@@ -7,6 +7,8 @@
 		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"></link>
 		<link rel="shortcut icon" href="favicon.ico"></link>
 		<meta name="apple-mobile-web-app-capable" content="yes"></meta>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
+		<meta name="apple-mobile-web-app-title" content="GBCPlay"></meta>
         <style type="text/css">@import url(&quot;css/GameBoy.css&quot;);</style>
         <script type="text/javascript">
     var DEBUG_MESSAGES = false;
@@ -30,7 +32,7 @@
         <title>GBCPlay</title>
     </head>
     <body>
-		<button id="enable_sound" class="window" onclick="settings[0]=true;document.getElementById('enable_sound').style.display='none';">Click Here to enable sound!</button>
+		<button id="enable_sound_button" onclick="settings[0]=true;document.getElementById('enable_sound_button').style.display='none';">Click Here to enable sound!</button>
         <div id="GameBoy" class="window" style="width: 80vh; height: 80vh;">
             <div class="menubar">
                 <span id="GameBoy_file_menu">File</span>

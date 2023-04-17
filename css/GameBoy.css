@@ -466,7 +466,7 @@ div.controls {
     align-items: flex-start;
 }
 
-button#enable_sound {
+button#enable_sound_button {
 	z-index: 100;
   position: absolute;
   left: 50%;
