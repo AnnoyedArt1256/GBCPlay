@@ -397,12 +397,6 @@ ul.menu {
 	border-right-color: rgb(50, 50, 50);
 	overflow: visible;
 }
-ul.menu:hover {
-	display: block;
-	display: inline-block;
-	top: 0;
-	left: 0;
-}
 ul.menu > li {
 	display: block;
 	position: relative;
@@ -422,8 +416,6 @@ ul.menu > li:hover {
 	background-color: rgba(255, 255, 200, 0.3);
 }
 ul.menu > li:hover > ul.menu {
-	left: 220px;
-	top: 0;
 	display: block;
 	display: inline-block;
 }
@@ -434,4 +426,18 @@ canvas {
   image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
   image-rendering: pixelated;                 /* Awesome future-browsers       */
   -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+}
+ul.menu {
+	position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+div.window {
+	position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+	width: 25%;
+	height: 25%;
 }
