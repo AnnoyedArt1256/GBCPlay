@@ -19,7 +19,7 @@ body {
 	-webkit-user-select: none;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-touch-callout: none;
-	width: auto;
+	width: auto;#
 	height: auto;
 	min-width: 100%;
 	min-height: 100%;
@@ -41,7 +41,7 @@ div#GameBoy {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%,-75%) scale(0.6);
 }
 
 div.window {
@@ -440,4 +440,120 @@ div.window {
   transform: translate(-50%,-50%);
 	width: 25%;
 	height: 25%;
+}
+p.credits {
+  color: white;
+  position: absolute;
+  left: 8px;
+  top: calc( 100% - 4em );
+  font-size: 0.75em;
+}
+div.controls {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 15%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+}
+
+.flex-item1:nth-child(1) {
+    order: 0;
+    flex: 20 0 auto;
+    align-self: stretch;
+}
+
+.flex-item1:nth-child(2) {
+    order: 1;
+    flex: 0 0 auto;
+    align-self: stretch;
+}
+div.controls > #cont1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+}
+
+div.controls > #cont2 {
+	  margin: 0 auto;
+	  text-align: center;
+}
+
+div.controls > #cont2 > button {
+      font-size: 4vh;
+}
+
+div.controls > #cont1 > #dpad {
+	position: relative;
+}
+
+div.controls > #cont1 > #dpad > button {
+	font-size: 5vh;
+	width: 7.5vh;
+}
+
+div.controls > #cont1 > #act > button {
+	font-size: 5vh;
+	width: 7.5vh;
+}
+
+div.controls > #cont1 > #dpad > #u {
+  position: fixed;
+  left: 7.5vh;
+  top: 0%;
+}
+
+div.controls > #cont1 > #dpad > #d {
+  position: fixed;
+  left: 7.5vh;
+  top: 20vh;
+}
+
+div.controls > #cont1 > #dpad > #l {
+	position: relative;
+	top: 10vh;
+	left: 0px;
+}
+
+div.controls > #cont1 > #dpad > #r {
+	position: relative;
+	top: 10vh;
+	float: right;
+}
+
+div.controls > #cont1 > #act > #b {
+	position: relative;
+	top: 12.5vh;
+	left: 1vw;
+}
+
+div.controls > #cont1 > #act > #a {
+	position: relative;
+	top: 7.5vh;
+  left: 2vw;
+}
+
+.flex-item2:nth-child(1) {
+    order: 0;
+    flex: 15 0 0px;
+    align-self: stretch;
+}
+
+.flex-item2:nth-child(2) {
+    order: 0;
+    flex: 0 0 1.5vw;
+    align-self: stretch;
+}
+
+.flex-item2:nth-child(3) {
+    order: 0;
+    flex: 15 0 0px;
+    align-self: stretch;
 }

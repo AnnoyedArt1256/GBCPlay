@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
     <head>
+		<link rel="shortcut icon" href="favicon.ico"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
-		<link rel="apple-touch-icon" href="images/128.png"/>
+		<link rel="apple-touch-icon" href="128.png"/>
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<meta name="apple-mobile-web-app-title" content="GBCPlay"/>
         <style type="text/css">@import url(&quot;css/GameBoy.css&quot;);</style>
@@ -26,7 +27,7 @@
         <script type="text/javascript" src="js/other/resize.js"/>
         <script type="text/javascript" src="js/GameBoyCore.js"/>
         <script type="text/javascript" src="js/GameBoyIO.js"/>
-        <title>GameBoy Online</title>
+        <title>GBCPlay</title>
     </head>
     <body>
         <div id="GameBoy" class="window" style="width: 80vh; height: 80vh;">
@@ -38,7 +39,25 @@
                 <canvas id="mainCanvas"/>
             </div>
         </div>
-		<div id="joy" style="width: 30vw; height: 30vw;"></div>
+		<div class="controls" style="width: 48vh; height: 40vh;">
+			<div id="cont1" class="flex-item1">
+				<div id="dpad" class="flex-item2">
+					<button id="l">&lt;</button>
+					<button id="r">&gt;</button>
+					<button id="u">^</button>
+					<button id="d">v</button>
+				</div>
+				<div class="flex-item2"/>
+				<div id="act" class="flex-item2">
+					<button id="b">B</button>
+					<button id="a">A</button>
+				</div>
+			</div>
+			<div id="cont2" class="flex-item1">
+				<button>SELECT</button>
+				<button>START</button>
+			</div>
+		</div>
         <div id="terminal" class="window">
             <div id="terminal_output"/>
             <div class="button_rack">
@@ -128,21 +147,9 @@
             <li id="local_storage_list_menu">Save Manager</li>
             <li id="freeze_list_menu">Freeze State Manager</li>
         </ul>
-        <div id="fullscreenContainer">
+        <div id="fullscreenContainer" hidden="hidden">
             <canvas id="fullscreen" class="maximum"/>
         </div>
-		<script>
-			/*
-			var Joy1 = new JoyStick("joy", {
-				"internalFillColor": "#eee",
-				"internalStrokeColor": "#eee",
-				"externalStrokeColor": "#eee"
-			}, function(stickData) {
-				sx = stickData.x;
-				sy = stickData.y;
-				dir = stickData.cardinalDirection;
-			});
-			*/
-		</script>
+		<p class="credits">Original GameBoy-Online Emulator by taisel<br/>GBCPlay by AArt1256</p>
     </body>
 </html>
