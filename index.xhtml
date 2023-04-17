@@ -54,8 +54,8 @@
 				</div>
 			</div>
 			<div id="cont2" class="flex-item1">
-				<button>SELECT</button>
-				<button>START</button>
+				<button id="start_button">SELECT</button>
+				<button id="select_button">START</button>
 			</div>
 		</div>
         <div id="terminal" class="window">
@@ -151,5 +151,31 @@
             <canvas id="fullscreen" class="maximum"/>
         </div>
 		<p class="credits">Original GameBoy-Online Emulator by taisel<br/>GBCPlay by AArt1256</p>
+	<script>
+		b=document.querySelector('#r')
+		b.onpointerdown=function(){GameBoyKeyDown("right")}
+		b.onpointerup=function(){GameBoyKeyUp("right")}
+		b=document.querySelector('#l')
+		b.onpointerdown=function(){GameBoyKeyDown("left")}
+		b.onpointerup=function(){GameBoyKeyUp("left")}
+		b=document.querySelector('#u')
+		b.onpointerdown=function(){GameBoyKeyDown("up")}
+		b.onpointerup=function(){GameBoyKeyUp("up")}
+		b=document.querySelector('#d')
+		b.onpointerdown=function(){GameBoyKeyDown("down")}
+		b.onpointerup=function(){GameBoyKeyUp("down")}
+		b=document.querySelector('#a')
+		b.onpointerdown=function(){GameBoyKeyDown("a")}
+		b.onpointerup=function(){GameBoyKeyUp("a")}
+		b=document.querySelector('#b')
+		b.onpointerdown=function(){GameBoyKeyDown("b")}
+		b.onpointerup=function(){GameBoyKeyUp("b")}
+		b=document.querySelector('#select_button')
+		b.onpointerdown=function(){GameBoyKeyDown("select")}
+		b.onpointerup=function(){GameBoyKeyUp("select")}
+		b=document.querySelector('#start_button')
+		b.onpointerdown=function(){GameBoyKeyDown("start")}
+		b.onpointerup=function(){GameBoyKeyUp("start")}
+	</script>
     </body>
 </html>
