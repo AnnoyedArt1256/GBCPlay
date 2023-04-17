@@ -1,0 +1,10 @@
+{
+  "name": "GBCPlay",
+  "description": "GB/GBC Emulator as a PWA app for iOS",
+  "launch_path": "/index.xhtml",
+  "fullscreen": false,
+  "icons": {
+    "128": "128.png"
+  },
+  "orientation": ["portrait-primary"]
+}

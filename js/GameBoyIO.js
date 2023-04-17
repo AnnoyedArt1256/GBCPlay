@@ -2,7 +2,7 @@
 var gameboy = null;						//GameBoyCore object.
 var gbRunInterval = null;				//GameBoyCore Timer
 var settings = [						//Some settings.
-	true, 								//Turn on sound.
+	false, 								//Turn on sound.
 	true,								//Boot with boot ROM first?
 	false,								//Give priority to GameBoy mode
 	1,									//Volume level set.
@@ -18,14 +18,21 @@ var settings = [						//Some settings.
 	true,								//Use image smoothing based scaling?
     [true, true, true, true]            //User controlled channel enables.
 ];
+
+
 function start(canvas, ROM) {
 	clearLastEmulation();
 	autoSave();	//If we are about to load a new game, then save the last one...
 	gameboy = new GameBoyCore(canvas, ROM);
 	gameboy.openMBC = openSRAM;
 	gameboy.openRTC = openRTC;
-	gameboy.start();
-	run();
+	var soundthing = setInterval(function() {
+		if (settings[0]) {
+			gameboy.start();
+			run();
+			clearInterval(soundthing);
+		}
+	},250)
 }
 function run() {
 	if (GameBoyEmulatorInitialized()) {

@@ -1,4 +1,9 @@
 @charset "utf-8";
+button {
+	color: white;
+	background-color: #333;
+	border-radius: 4px;
+}
 html {
 	background-color: rgb(68, 64, 76);
 	background-attachment: fixed;
@@ -54,7 +59,7 @@ div.window {
 	top: 0;
 	left: 0;
 	color: rgb(0, 0, 0);
-	font-size: 16px;
+	font-size: 18px;
 	-webkit-border-radius: 10px 10px 3px 3px;
 	border-radius: 10px 10px 3px 3px;
 	-webkit-box-shadow: 5px 5px 10px rgb(30, 30, 30);
@@ -459,6 +464,14 @@ div.controls {
     justify-content: flex-start;
     align-content: stretch;
     align-items: flex-start;
+}
+
+button#enable_sound {
+	z-index: 100;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,30%) scale(4);
 }
 
 .flex-item1:nth-child(1) {
